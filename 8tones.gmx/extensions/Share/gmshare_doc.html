@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.6 (451290)"/><meta name="altitude" content="57.62341690063477"/><meta name="author" content="benoit.rouleau@icloud.com"/><meta name="created" content="2014-12-12 03:33:58 +0000"/><meta name="latitude" content="45.54041986325579"/><meta name="longitude" content="-73.62409011823787"/><meta name="source" content="desktop.mac"/><meta name="updated" content="2015-02-09 00:21:33 +0000"/><title>Share Extension Documentation</title></head><body style="padding: 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.5; word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+<div><span style="font-size: 24px;">Share Extension v1.0.3</span></div>
+<div>
+<div>By Beneton Software</div>
+</div>
+<div><a href="https://marketplace.yoyogames.com/publishers/65/beneton-software">https://marketplace.yoyogames.com/publishers/65/beneton-software</a></div>
+<div><br/></div>
+<div><br/></div>
+<div>
+<div><u style="font-size: 18px;">Getting started</u></div>
+</div>
+<div><u><br/></u></div>
+<div>There are two ways to share stuff with this extension: the simple functions (1 line to share some text, a URL, an image, or a file) or the more elaborate and more powerful advanced functions, which are prefixed by <span style="font-family: 'Andale Mono';">share_ext</span>. So it can be as simple as:</div>
+<div><br/></div>
+<div><span style="font-family: 'Andale Mono';">share_image("screenshot.png");</span></div>
+<div><br/></div>
+<div>...or as customized as:</div>
+<div><br/></div>
+<div><span style="font-family: 'Andale Mono';">share_ext_prepare();</span></div>
+<div><span style="font-family: 'Andale Mono';">share_ext_add_image("screenshot.png");</span></div>
+<div><span style="font-family: 'Andale Mono';">share_ext_add_text("I just scored " + str(score) + "!");</span></div>
+<div><span style="font-family: 'Andale Mono';">share_ext_add_url("http://your-game-url.com");</span></div>
+<div><span style="font-family: 'Andale Mono';">share_ext_set_activity(ACTIVITY_TYPE_TWITTER);</span></div>
+<div><span style="font-family: 'Andale Mono';">share_ext_launch();</span></div>
+<div><br/></div>
+<div>Please note that in both cases, the file “screenshot.png” must exist in the <i>save area</i> to be shared properly (please read the “File System Limits” section of the GameMaker: Studio manual if you don't know what that is).</div>
+<div><br/></div>
+<div>In other words, the <span style="font-family: 'Andale Mono';">share_ext_*</span> functions give you more control such as the ability to share more than one item at once and set an activity to share with, as opposed to letting the user choose (see the “Constants” section of this document for a list of all supported activities).</div>
+<div><br/></div>
+<div>Below is the complete list of functions contained in the extension. If you are experiencing any issue, please make sure to check out the “Troubleshooting” section at the bottom of this document. If you don’t find an answer to your question, don’t hesitate to contact me through the YoYo Games Marketplace (URL at the top). Thank you and have fun!</div>
+<div><br/></div>
+<div><br/></div>
+<div><u style="font-size: 18px;">Functions</u></div>
+<div><u><span style="font-size: 18px;"><br/></span></u></div>
+<div><b>share_text(text)</b></div>
+<div>Opens the activity chooser to share a string as plain text.</div>
+<div><font face="Andale Mono">text</font>: the text to share<br/></div>
+<div><br/></div>
+<div><b>share_text_ext(text, subject, email)</b></div>
+<div>Opens the activity chooser to share a string as plain text and provide extra information if the user chooses to share by email (and other apps that take “subject” and/or “email” as parameters).</div>
+<div><font face="Andale Mono">text</font>: the text to share</div>
+<div><font face="Andale Mono">subject</font>: the subject of the email/message</div>
+<div><font face="Andale Mono">email</font>: the email address to put by default in the “To” field (this argument is ignored on iOS)</div>
+<div><br/></div>
+<div><b>share_url(url)</b></div>
+<div>Opens the activity chooser to share a URL. This function gives different share options than <span style="font-family: 'Andale Mono';">share_text()</span> on iOS, but on Android it does exactly the same thing.</div>
+<div><font face="Andale Mono">url</font>: the URL to share<br/></div>
+<div><br/></div>
+<div><b>share_image(filename)</b></div>
+<div>Opens the activity chooser to share an image. Note: The file must be located in the “save area” of your game, so if it part of your bundle (i.e. in your “Included Files”), you must copy it to the save area first. Read the “File System Limits” section of the GameMaker: Studio manual for more information.</div>
+<div><font face="Andale Mono">filename</font>: the filename of the image to share (without the path)<br/></div>
+<div><br/></div>
+<div><b>share_file(filename)</b></div>
+<div>Opens the activity chooser to share a file (any format). Read the note in <span style="font-family: 'Andale Mono';">share_image()</span>.</div>
+<div><font face="Andale Mono">filename</font>: the filename of the file to share (without the path)<br/></div>
+<div><br/></div>
+<div><b>share_set_popover_origin(x, y)</b> <i> (iOS only)</i></div>
+<div>Sets the origin of the share popover to a single (x, y) point on the screen. The popover only appears on iPad as it takes the form of a panel sliding from the bottom of the screen on iPhone/iPod Touch. Note: The positions are in points, not pixels (on retina displays, 1 point = 2 pixels x 2 pixels).</div>
+<div><br/></div>
+<div><b>share_set_popover_region(x, y, width, height)</b>  <i>(iOS only)</i><br/></div>
+<div>Sets the origin of the share popover to a rectangle on the screen. If you use this function, it overrides <span style="font-family: 'Andale Mono';">share_set_popover_origin()</span> (and vice versa). This one is more powerful because you can define a rectangle to be a region of interest in which you are sure the popover will not fall.</div>
+<div><br/></div>
+<div><b>share_set_dialog_title(title)</b>  <i>(Android only)</i></div>
+<div>Changes the title of the share dialog on Android. The default title is “Share using”.</div>
+<div><br/></div>
+<div><b>share_did_finish()</b></div>
+<div>Returns whether the share process ended since the last call to this function. It does not necessarily mean the share was successful, for that you need to call <span style="font-family: 'Andale Mono';">share_get_completed()</span> (not available on Android).</div>
+<div><br/></div>
+<div><b>share_get_completed()</b>  <i>(iOS only)</i></div>
+<div>Returns whether the last share operation was completed successfully.</div>
+<div><br/></div>
+<div><b>share_get_chosen_activity()</b>  <i>(iOS only)</i></div>
+<div>Returns one of the <span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_*</span> constants representing the activity chosen by the user for the last share operation.</div>
+<div><br/></div>
+<div><b>share_get_chosen_activity_string()</b>  <i>(iOS only)</i></div>
+<div>When <span style="font-family: 'Andale Mono';">share_get_chosen_activity()</span> returns <span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_OTHER</span>, then you can use this function to have more information on the app selected by the user. Here’s an example of string that this function can return: <i>com.evernote.iPhone.Evernote.EvernoteShare</i>.</div>
+<div><br/></div>
+<div><b>share_ext_prepare()</b></div>
+<div>Prepares a more advanced share operation. This function <i>must</i> be called before any of the other <span style="font-family: 'Andale Mono';">share_ext_*</span> functions. With these functions you can share a piece of text with multiple images, for instance. You can also force an activity type such as Facebook or Twitter instead of letting the user choose, with <span style="font-family: 'Andale Mono';">share_ext_set_activity()</span>. After you have set all the parameters you want, you can launch the share operation you prepared with <span style="font-family: 'Andale Mono';">share_ext_launch()</span>.</div>
+<div><br/></div>
+<div><b>share_ext_add_text(text)</b></div>
+<div>Adds a string of plain text to the current share operation.</div>
+<div><font face="Andale Mono">text</font>: the text to share<br/></div>
+<div><br/></div>
+<div><b>share_ext_add_url(url)</b></div>
+<div>
+<div>Adds a URL to the current share operation.</div>
+<div><font face="Andale Mono">url</font>: the URL to share</div>
+</div>
+<div><br/></div>
+<div><b>share_ext_add_image(filename)</b></div>
+<div>Adds an image to the current share operation. Read the note in <span style="font-family: 'Andale Mono';">share_image()</span>.</div>
+<div><font face="Andale Mono">filename</font>: the filename of the image to share (without the path)</div>
+<div><br/></div>
+<div><b>share_ext_add_file(filename)</b></div>
+<div>Adds a file (any format) to the current share operation. Read the note in <span style="font-family: 'Andale Mono';">share_image()</span>.</div>
+<div>
+<div><font face="Andale Mono">filename</font>: the filename of the file to share (without the path)</div>
+</div>
+<div><br/></div>
+<div><b>share_ext_set_activity(activity_type)</b></div>
+<div>Sets the activity type to use for the current share operation. Only the following activity types can be used with this function: <span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_FACEBOOK</span>, <span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_TWITTER</span>, <span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_WEIBO</span> (iOS only), <span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_MESSAGE</span>, and <span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_MAIL</span>. When you use this function, <span style="font-family: 'Andale Mono';">share_ext_launch()</span> will skip the activity chooser and go straight to the given activity (if available), except for <span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_MESSAGE</span> and <span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_MAIL</span> on Android where the chooser will appear. Also on Android, <span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_MESSAGE</span> does not support images or files (just text).</div>
+<div><br/></div>
+<div><b>share_ext_exclude_activity(activity_type)</b>  <i>(iOS only)</i></div>
+<div>Excludes the given activity type from the activity chooser for the current share operation. You can exclude multiple activities for the same share operation, just call this function multiple times.</div>
+<div><br/></div>
+<div><b>share_ext_set_subject(subject)</b></div>
+<div>Sets the subject of the email/message for the current share operation. Only a few activities consider this value.</div>
+<div><br/></div>
+<div><b>share_ext_add_recipient(email_address)</b></div>
+<div>Adds the given email address to the recipients of the email/message for the current share operation.</div>
+<div><br/></div>
+<div><b>share_ext_set_body_is_html(true_or_false)</b></div>
+<div>Sets whether the body text of the current share operation (set by <span style="font-family: 'Andale Mono';">share_ext_add_text()</span>) should be treated as HTML (<span style="font-family: 'Andale Mono';">true</span>) or as plain text (<span style="font-family: 'Andale Mono';">false</span>). The default is <span style="font-family: 'Andale Mono';">false</span>.</div>
+<div><br/></div>
+<div><b>share_ext_launch()</b></div>
+<div>Launches the current share operation with all the parameters that were set since the last call to <span style="font-family: 'Andale Mono';">share_ext_prepare()</span>, and returns whether that was successful. The function returns <span style="font-family: 'Andale Mono';">false</span> when it fails to show anything to the user. That can happen on iOS when you have set the activity type to <span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_MAIL</span> using <span style="font-family: 'Andale Mono';">share_ext_set_activity()</span> and there is no email account listed on the device, on Android when the activity type is <span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_FACEBOOK</span> or <span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_TWITTER</span> and the user does not have the required application installed on his device.</div>
+<div><br/></div>
+<div><br/></div>
+<div>
+<div><u style="font-size: 18px;">Constants</u></div>
+<div><br/></div>
+</div>
+<div><b>Activity types</b></div>
+<div><font face="Andale Mono">ACTIVITY_TYPE_NONE</font></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_FACEBOOK</span></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_TWITTER</span></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_WEIBO</span></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_MESSAGE</span></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_MAIL</span></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_PRINT</span></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_COPY</span></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_ASSIGN_TO_CONTACT</span></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_SAVE</span></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_READING_LIST</span></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_FLICKR</span></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_VIMEO</span></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_TENCENT_WEIBO</span></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_AIRDROP</span></div>
+<div><span style="font-family: 'Andale Mono';">ACTIVITY_TYPE_OTHER</span></div>
+<div><span style="font-family: 'Andale Mono';"><br/></span></div>
+<div><span style="font-family: 'Andale Mono';"><br/></span></div>
+<div>
+<div>
+<div><u style="font-size: 18px;">Troubleshooting</u></div>
+</div>
+<div><u><br/></u></div>
+<div><b>The functions don’t seem to do anything on Android.</b></div>
+<div>This is most likely because you are using the command “Run the game” (or “Run in debug mode”) instead of “Create Application”. Unfortunately on Android you have to create a full APK for extensions to work (this is not the case on iOS).</div>
+</div>
+<div><br/></div>
+<div><b>Sharing text on Facebook doesn't work.</b></div>
+<div>Unfortunately, that is not a bug, it is “by design”: <a href="https://developers.facebook.com/bugs/962985360399542/">https://developers.facebook.com/bugs/962985360399542/</a>. Facebook doesn't want you to “pre-fill the user message parameter with any content the user didn't enter themselves, even if they can edit or delete that content before sharing.” Sorry for the inconvenience. You can at least share URLs and images.</div>
+<div><br/></div>
+<div><b>I want to share a screenshot of my game but the screenshot is black or missing.</b></div>
+<div>Please refer to the included example “Take screenshot and share on Facebook”. You should save the <span style="font-family: 'Andale Mono';">application_surface</span> with <span style="font-family: 'Andale Mono';">surface_save()</span> and share the resulting PNG image.</div>
+</body></html>
