@@ -44,8 +44,6 @@
   <NewExtensions>
     <extension index="0">extensions\CloseKeyboard</extension>
     <extension index="1">extensions\Share</extension>
-    <extension index="2">extensions\GooglePlayLicensingAsExt</extension>
-    <extension index="3">extensions\GooglePlayServicesExtension</extension>
   </NewExtensions>
   <sounds name="sound">
     <sounds name="Square Waves">
