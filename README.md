@@ -1,5 +1,5 @@
 # 8Tones
-![8Tone Logo](./logo.png)
+![8Tone Logo](./images/logo.png)
 
 The 8-bit music sequencer written in GML
 
@@ -16,10 +16,10 @@ The 8-bit music sequencer written in GML
  In addition, this application also produces TXT file that can be imported to Famitracker (2A03 with MM5 expansion).
  
 ### Screenshots/UI
-![Main sequencing screen](./Screenshot_A.png)
-![Piano roll](./Screenshot_B.png)
-![Main sequencing UI details](./8-tones-howtouse1.png)
-![Piano roll UI details](./8-tones-howtouse2.png)
+![Main sequencing screen](./images/Screenshot_A.png)
+![Piano roll](./images/Screenshot_B.png)
+![Main sequencing UI details](./images/8-tones-howtouse1.png)
+![Piano roll UI details](./images/8-tones-howtouse2.png)
  
 ### What happened to the application?
  Unfortunately in 2018, I have cancelled the project due to the following reasons:
