@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///INIT
 BASEURL = "XXXXX";
-salt = "PUT SALE HERE"; // a random phrase used for hashing - MAKE IT UNIQUE AND KEEP IT SECRET!!!
+salt = "PUT SALT HERE"; // a random phrase used for hashing - MAKE IT UNIQUE AND KEEP IT SECRET!!!
 
 alpha = 0;
 x1 = 0;
