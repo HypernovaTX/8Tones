@@ -4,7 +4,7 @@
 The 8-bit music sequencer written in GML
 
 ### What is 8Tones?
- 8Tones is a psudo 8-bit music sequencer (similar to [Famitracker](https://github.com/HertzDevil/0CC-FamiTracker)) written by @HypernovaTX back around 2014-2016 with Game Maker Studio 1.4 (GML). Initially it was a music maker made for Windows Phone 8.1, I also ported the application to both iOS and Android due to demand. Like Famitracker, it is a sequence tracker that produces 8-Bit music. Unlike true NES 8-bit (2A03)\*, I coded this in 5 channels:
+ 8Tones is a psudo 8-bit music sequencer (similar to [Famitracker](https://github.com/HertzDevil/0CC-FamiTracker)) written by @HypernovaTX back around 2015-2016 with Game Maker Studio 1.4 (GML). Initially it was a music maker made for Windows Phone 8.1, I also ported the application to both iOS and Android due to demand. Like Famitracker, it is a sequence tracker that produces 8-Bit music. Unlike true NES 8-bit (2A03)\*, I coded this in 5 channels:
 > * 12.5% square
 > * 25% square wave
 > * 50% square wave
