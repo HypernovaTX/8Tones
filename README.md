@@ -63,3 +63,4 @@ CREATE TABLE IF NOT EXISTS `share` (
 ```php
 $con = mysqli_connect("localhost","DB_USER","DB_USER_PASSWORD","DATABASE");
 ```
+NOTE: Special thanks to [Zack Banack](https://github.com/zbanack) for helping me on the backend PHP and MySQL.
