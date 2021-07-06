@@ -20,10 +20,11 @@ The 8-bit music sequencer written in GML
 ![Piano roll](./images/Screenshot_B.png)
 ![Main sequencing UI details](./images/8-tones-howtouse1.png)
 ![Piano roll UI details](./images/8-tones-howtouse2.png)
+
 [Video Demonstration](https://www.youtube.com/watch?v=A7rM7G9tHGE)
  
 ### What happened to the application?
- I finished the project in September 2016 but looking to adding more features to it. Unfortunately in 2018, I have cancelled the project due to the following reasons:
+ I finished the project in September 2016 but looking to add more features to it. Unfortunately in 2018, I have to cancel this project due to the following reasons:
 - Game Maker's run time is highly inefficient, which result in latencies like timing and audio sample
 - Microsoft discontinued Windows Mobile platform
 - Yoyo Games no longer makes update for Game Maker Studio 1.4. Therefore Google Play and Apple iTunes Connect won't accepting these anymore since GMS 1.4 can only take older SDKs
